@@ -18,8 +18,7 @@ Modern functional programming library inspired by ramdajs
       // => [2, 4, 6]
       
 ## RoadMap
-- version 0.1
-    - #1
+- version 0.1: https://github.com/aerophant/ramda/issues/1
     
 ## Want to help
 - You can suggest function by creating issues and/or PR
