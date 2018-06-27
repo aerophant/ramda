@@ -7,13 +7,14 @@ Modern functional programming library inspired by ramdajs
 - `aerophant/ramda` provide auto curry for you and give you better life to do function composition like `ramdajs` or `lodash/fp`.
 
       pipe(
-         add(1),
+         always([1, 2, 3, 4, 5]),
+         map(add(1)),
          // filter even numbers only
          filter(pipe(
            modulo(_, 2),
            equals(0)
          ))
-      )([1, 2, 3, 4, 5]);
+      )();
       // => [2, 4, 6]
       
 ## RoadMap
@@ -23,5 +24,3 @@ Modern functional programming library inspired by ramdajs
 ## Want to help
 - You can suggest function by creating issues and/or PR
 - help improve performance by creating PR.
-
-# Thank you
