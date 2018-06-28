@@ -1,10 +1,6 @@
 <?php
 namespace Aerophant\Ramda;
 
-use Aerophant\Ramda\Internal\RamdaInternalUtil;
-
-define('__', '__AEROPHANT_RAMDA_CURRY_ARGUMENT__');
-
 /**
  * @param int $a
  * @param int $b
@@ -45,25 +41,16 @@ function curryN(callable $fn, int $numberOfArguments) {
     if ($length > $length) {
       throw new \InvalidArgumentException("Number of passed($length) parameters is greater than expected($numberOfArguments)");
     }
-    $anyCurryArguments = RamdaInternalUtil::anyCurryArguments($arguments);
     // NO CURRY
-    if ($length == $numberOfArguments && !$anyCurryArguments) {
+    if ($length == $numberOfArguments) {
       return call_user_func_array($fn, $arguments);
     }
     // AUTO CURRY
-    if (!$anyCurryArguments) {
-      $curriedFn = function () use ($fn, $arguments, $length) {
-        $curriedArguments = func_get_args();
-        return call_user_func_array($fn, array_merge($arguments, $curriedArguments));
-      };
-      return curryN($curriedFn, $numberOfArguments - $length);
-    }
-    // CURRY WITH _
-    pipe(
-      map([RamdaInternalUtil::class, 'isCurryArgument']),
-      function ($array) {}
-    );
-    throw new \Exception('Curry with _ is not supported yet');
+    $curriedFn = function () use ($fn, $arguments, $length) {
+      $curriedArguments = func_get_args();
+      return call_user_func_array($fn, array_merge($arguments, $curriedArguments));
+    };
+    return curryN($curriedFn, $numberOfArguments - $length);
   };
 }
 
