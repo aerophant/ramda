@@ -9,7 +9,7 @@ class AlwaysTest extends TestCase
 {
 
   function testAlwaysMustReturnSameObject() {
-    $always = always(new PlainObjectAsset());
+    $always = always()(new PlainObjectAsset());
     $this->assertSame($always(), $always());
   }
 

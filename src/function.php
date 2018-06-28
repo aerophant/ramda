@@ -19,10 +19,15 @@ function add() {
  * @param mixed $data
  * @return \Closure
  */
-function always($data) {
-  return function () use ($data) {
-    return $data;
+function always() {
+  $always = function ($data) {
+    return function () use ($data) {
+      return $data;
+    };
   };
+  $arguments = func_get_args();
+  $curried = curryN($always, 1);
+  return call_user_func_array($curried, $arguments);
 }
 
 /**

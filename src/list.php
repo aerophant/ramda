@@ -64,7 +64,10 @@ function drop(){
  * @return mixed
  */
 function dropFirst(array $array) {
-  return drop(0, $array);
+  $dropFirst = drop(0);
+  $arguments = func_get_args();
+  $curried = curryN($dropFirst, 1);
+  return call_user_func_array($curried, $arguments);
 }
 
 /**
@@ -72,7 +75,10 @@ function dropFirst(array $array) {
  * @return mixed
  */
 function dropLast(array $array) {
-  return drop(count($array)-1, $array);
+  $dropLast = drop(count($array)-1);
+  $arguments = func_get_args();
+  $curried = curryN($dropLast, 1);
+  return call_user_func_array($curried, $arguments);
 }
 
 /**
