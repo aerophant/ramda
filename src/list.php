@@ -49,7 +49,7 @@ function any()
 
 /**
  * a → [a] → [a]
- * @param $item
+ * @param mixed $item
  * @param array $array
  * @return array|\Closure
  */
@@ -65,7 +65,7 @@ function append()
 
 /**
  * [a] → [a] → [a]
- * @param $item
+ * @param mixed $item
  * @param array $array
  * @return array|\Closure
  */
@@ -166,7 +166,7 @@ function map()
 
 /**
  * a → [a] → [a]
- * @param $item
+ * @param mixed $item
  * @param array $array
  * @return array|\Closure
  */
