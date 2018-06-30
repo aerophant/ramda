@@ -43,7 +43,7 @@ function call()
   $length = count($arguments);
   switch ($length) {
     case 0:
-          return 'Aerophant\Ramda\call';
+          return __FUNCTION__;
     case 1:
       $fn = $arguments[0];
           return function (...$arguments) use ($fn) {
