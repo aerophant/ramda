@@ -38,8 +38,8 @@ function gte()
 
 /**
  * a → a → Boolean
- * @param $firstValue
- * @param $secondValue
+ * @param mixed $firstValue
+ * @param mixed $secondValue
  * @return boolean|\Closure
  */
 function identical()
