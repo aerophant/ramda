@@ -18,6 +18,45 @@ function always()
 }
 
 /**
+ * @param callable $fn
+ * @param array $args
+ * @return string
+ */
+function apply()
+{
+  $apply = function (callable $fn, array $args) {
+    return call_user_func_array($fn, $args);
+  };
+  $arguments = func_get_args();
+  $curried = curryN($apply, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param callable $fn
+ * @param mixed ...$args
+ * @return string
+ */
+function call()
+{
+  $arguments = func_get_args();
+  $length = count($arguments);
+  switch ($length) {
+    case 0:
+          return __FUNCTION__;
+    case 1:
+      $fn = $arguments[0];
+          return function (...$arguments) use ($fn) {
+            return call_user_func_array($fn, $arguments);
+          };
+    default:
+      $fn = $arguments[0];
+      $arguments = dropFirst($arguments);
+          return call_user_func_array($fn, $arguments);
+  }
+}
+
+/**
  * @return callable
  * @throws \Exception
  */
