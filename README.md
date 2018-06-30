@@ -17,7 +17,7 @@ Modern functional programming library inspired by ramdajs
          map(add(1)),
          // filter even numbers only
          filter(pipe(
-           modulo(__, 2),
+           partialRight(modulo(), [2]),
            equals(0)
          ))
       )();
