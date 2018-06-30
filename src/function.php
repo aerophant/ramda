@@ -2,21 +2,6 @@
 namespace Aerophant\Ramda;
 
 /**
- * @param int $a
- * @param int $b
- * @return int
- */
-function add()
-{
-  $add = function (int $a, int $b) {
-    return $a + $b;
-  };
-  $arguments = func_get_args();
-  $curried = curryN($add, 2);
-  return call_user_func_array($curried, $arguments);
-}
-
-/**
  * @param mixed $data
  * @return \Closure
  */
