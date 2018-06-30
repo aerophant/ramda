@@ -48,6 +48,23 @@ function any()
 }
 
 /**
+ * @param callable $fn he function to invoke. Receives one argument
+ * @param array $array The list to iterate over.
+ * @return null|\Closure
+ */
+function arrayForEach()
+{
+  $arrayForEach = function (callable $fn, array $array) {
+    foreach ($array as $item) {
+      $fn($item);
+    }
+  };
+  $arguments = func_get_args();
+  $curriedAny = curryN($arrayForEach, 2);
+  return call_user_func_array($curriedAny, $arguments);
+}
+
+/**
  * a → [a] → [a]
  * @param mixed $item
  * @param array $array
@@ -176,6 +193,29 @@ function first()
   };
   $arguments = func_get_args();
   $curried = curryN($first, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param callable $keySelector
+ * @param array $array
+ * @return array
+ */
+function groupBy()
+{
+  $groupBy = function (callable $keySelector, array $array) {
+    return reduce(
+      function ($acc, $item) use ($keySelector) {
+        $key = $keySelector($item);
+        $acc[$key] = is_array($acc[$key]) ? array_merge($acc[$key], [$item]) : [$item];
+        return $acc;
+      },
+      [],
+      $array
+    );
+  };
+  $arguments = func_get_args();
+  $curried = curryN($groupBy, 2);
   return call_user_func_array($curried, $arguments);
 }
 
