@@ -144,7 +144,7 @@ function dropLast()
 function filter()
 {
   $filter = function (callable $predicateFunction, array $array) {
-    return array_values(array_filter($array, $predicateFunction));
+     return array_values(array_filter($array, $predicateFunction));
   };
   $arguments = func_get_args();
   $curried = curryN($filter, 2);
@@ -163,6 +163,45 @@ function filterPreserveKey()
   };
   $arguments = func_get_args();
   $curried = curryN($filter, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+function first()
+{
+  $first = function (array $array) {
+    if (empty($array)) {
+      return null;
+    }
+    return $array[0];
+  };
+  $arguments = func_get_args();
+  $curried = curryN($first, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+function head()
+{
+  $head = function (array $array) {
+    if (empty($array)) {
+      return null;
+    }
+    return $array[0];
+  };
+  $arguments = func_get_args();
+  $curried = curryN($head, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+function last()
+{
+  $last = function (array $array) {
+    if (empty($array)) {
+      return null;
+    }
+    return $array[count($array) - 1];
+  };
+  $arguments = func_get_args();
+  $curried = curryN($last, 1);
   return call_user_func_array($curried, $arguments);
 }
 
@@ -207,5 +246,18 @@ function reduce()
   };
   $arguments = func_get_args();
   $curried = curryN($reduce, 3);
+  return call_user_func_array($curried, $arguments);
+}
+
+function tail()
+{
+  $tail = function (array $array) {
+    if (empty($array)) {
+      return null;
+    }
+    return $array[count($array) - 1];
+  };
+  $arguments = func_get_args();
+  $curried = curryN($tail, 1);
   return call_user_func_array($curried, $arguments);
 }
