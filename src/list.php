@@ -154,8 +154,14 @@ function filterPreserveKey()
 
 function first()
 {
+  $first = function (array $array) {
+    if (empty($array)) {
+      return null;
+    }
+    return $array[0];
+  };
   $arguments = func_get_args();
-  $curried = curryN(__NAMESPACE__ . '\head', 1);
+  $curried = curryN($first, 1);
   return call_user_func_array($curried, $arguments);
 }
 
@@ -174,8 +180,14 @@ function head()
 
 function last()
 {
+  $last = function (array $array) {
+    if (empty($array)) {
+      return null;
+    }
+    return $array[count($array) - 1];
+  };
   $arguments = func_get_args();
-  $curried = curryN(__NAMESPACE__ . '\tail', 1);
+  $curried = curryN($last, 1);
   return call_user_func_array($curried, $arguments);
 }
 

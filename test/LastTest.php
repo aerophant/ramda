@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class LastTest extends TestCase
 {
-  public function testTail()
+  public function testLast()
   {
     $argument = [1, 2, 3, 4, 5];
     $expect = 5;
@@ -14,7 +14,7 @@ class LastTest extends TestCase
     $this->assertEquals($expect, $actual);
   }
 
-  public function testTailWithEmptyArray()
+  public function testLastWithEmptyArray()
   {
     $argument = [];
     $actual = last()($argument);
