@@ -8,9 +8,9 @@ use PHPUnit\Framework\TestCase;
 class AlwaysTest extends TestCase
 {
 
-  function testAlwaysMustReturnSameObject() {
+  public function testAlwaysMustReturnSameObject()
+  {
     $always = always()(new PlainObjectAsset());
     $this->assertSame($always(), $always());
   }
-
 }

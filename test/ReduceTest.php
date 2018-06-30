@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class ReduceTest extends TestCase
 {
-  public function testReduce() {
+  public function testReduce()
+  {
     $add = function ($a, $b) {
       return $a + $b;
     };

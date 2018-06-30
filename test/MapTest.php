@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class MapTest extends TestCase
 {
-  public function testMap(){
+  public function testMap()
+  {
     $array = [1, 2, 3, 4];
     $add10 = function ($it) {
       return $it + 10;

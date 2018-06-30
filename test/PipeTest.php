@@ -11,7 +11,8 @@ class PipeTest extends TestCase
   /**
    * @throws \Exception
    */
-  public function testPipeSingleMethod() {
+  public function testPipeSingleMethod()
+  {
     $piped = pipe(
       always(10)
     );
@@ -21,7 +22,8 @@ class PipeTest extends TestCase
   /**
    * @throws \Exception
    */
-  public function testPipeMultipleMethods() {
+  public function testPipeMultipleMethods()
+  {
     $piped = pipe(
       function ($a, $b) {
         return $a + $b;

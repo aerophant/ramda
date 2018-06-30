@@ -6,7 +6,8 @@ namespace Aerophant\Ramda;
  * @param int $b
  * @return int
  */
-function add() {
+function add()
+{
   $add = function (int $a, int $b) {
     return $a + $b;
   };
@@ -19,7 +20,8 @@ function add() {
  * @param mixed $data
  * @return \Closure
  */
-function always() {
+function always()
+{
   $always = function ($data) {
     return function () use ($data) {
       return $data;
@@ -34,17 +36,21 @@ function always() {
  * @return callable
  * @throws \Exception
  */
-function compose() {
+function compose()
+{
   $arguments = array_reverse(func_get_args());
   return call_user_func_array('Aerophant\Ramda\pipe', $arguments);
 }
 
-function curryN(callable $fn, int $numberOfArguments) {
+function curryN(callable $fn, int $numberOfArguments)
+{
   return function () use ($fn, $numberOfArguments) {
     $arguments = func_get_args();
     $length = count($arguments);
     if ($length > $length) {
-      throw new \InvalidArgumentException("Number of passed($length) parameters is greater than expected($numberOfArguments)");
+      throw new \InvalidArgumentException(
+        "Number of passed($length) parameters is greater than expected($numberOfArguments)"
+      );
     }
     // NO CURRY
     if ($length == $numberOfArguments) {
@@ -60,7 +66,8 @@ function curryN(callable $fn, int $numberOfArguments) {
 }
 
 //TODO change to construct
-function factory($class) {
+function factory($class)
+{
   return function () use ($class) {
     return new $class();
   };
@@ -70,10 +77,11 @@ function factory($class) {
  * @return callable
  * @throws \Exception
  */
-function pipe() {
+function pipe()
+{
   $arguments = func_get_args();
   $length = count($arguments);
-  if($length === 0) {
+  if ($length === 0) {
     throw new \Exception("pipe requires at least one argument");
   }
   return function () use ($arguments) {

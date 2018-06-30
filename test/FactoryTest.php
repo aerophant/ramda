@@ -8,13 +8,15 @@ use PHPUnit\Framework\TestCase;
 class FactoryTest extends TestCase
 {
 
-  function testFactoryMustReturnCorrectObjectType() {
+  public function testFactoryMustReturnCorrectObjectType()
+  {
     $factory = factory(PlainObjectAsset::class);
     $obj = $factory();
     $this->assertInstanceOf(PlainObjectAsset::class, $obj);
   }
 
-  function testFactoryMustAlwaysReturnNewObject() {
+  public function testFactoryMustAlwaysReturnNewObject()
+  {
     $factory = factory(PlainObjectAsset::class);
     $obj1 = $factory();
     $obj2 = $factory();

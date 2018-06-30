@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class AddTest extends TestCase
 {
-  public function testAdd() {
+  public function testAdd()
+  {
     $this->assertEquals(15, add(7)(8));
   }
 }

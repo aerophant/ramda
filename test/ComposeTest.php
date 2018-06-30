@@ -11,7 +11,8 @@ class ComposeTest extends TestCase
   /**
    * @throws \Exception
    */
-  public function testComposeSingleMethod() {
+  public function testComposeSingleMethod()
+  {
     $composed = compose(
       always(10)
     );
@@ -21,7 +22,8 @@ class ComposeTest extends TestCase
   /**
    * @throws \Exception
    */
-  public function testComposeMultipleMethods() {
+  public function testComposeMultipleMethods()
+  {
     $composed = compose(
       function ($i) {
         return $i * 10;
