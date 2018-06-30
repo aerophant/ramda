@@ -66,6 +66,20 @@ function curryN(callable $fn, int $numberOfArguments)
   };
 }
 
+function partial(callable $fn, array $args) {
+  return function () use ($fn, $args) {
+    $arguments = func_get_args();
+    return call_user_func_array($fn, array_merge($args, $arguments));
+  };
+}
+
+function partialRight(callable $fn, array $args) {
+  return function () use ($fn, $args) {
+    $arguments = func_get_args();
+    return call_user_func_array($fn, array_merge($arguments, $args));
+  };
+}
+
 /**
  * @return callable
  * @throws \Exception
