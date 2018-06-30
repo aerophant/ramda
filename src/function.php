@@ -42,6 +42,22 @@ function compose()
   return call_user_func_array('Aerophant\Ramda\pipe', $arguments);
 }
 
+/**
+ * @param string $class
+ * @return \Closure
+ */
+function construct()
+{
+  $construct = function ($class) {
+    return function () use ($class) {
+      return new $class();
+    };
+  };
+  $arguments = func_get_args();
+  $curried = curryN($construct, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
 function curryN(callable $fn, int $numberOfArguments)
 {
   return function () use ($fn, $numberOfArguments) {
@@ -62,14 +78,6 @@ function curryN(callable $fn, int $numberOfArguments)
       return call_user_func_array($fn, array_merge($arguments, $curriedArguments));
     };
     return curryN($curriedFn, $numberOfArguments - $length);
-  };
-}
-
-//TODO change to construct
-function factory($class)
-{
-  return function () use ($class) {
-    return new $class();
   };
 }
 
