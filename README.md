@@ -1,7 +1,11 @@
 # ramda
 Modern functional programming library inspired by ramdajs
 
-[![Build Status](https://travis-ci.org/aerophant/ramda.svg?branch=master)](https://travis-ci.org/aerophant/ramda) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aerophant/ramda/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aerophant/ramda/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/aerophant/ramda/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/aerophant/ramda/?branch=master) [![Latest Stable Version](https://poser.pugx.org/aerophant/ramda/v/stable)](https://packagist.org/packages/aerophant/ramda) [![License](https://poser.pugx.org/aerophant/ramda/license)](https://packagist.org/packages/aerophant/ramda)
+[![Build Status](https://travis-ci.org/aerophant/ramda.svg?branch=master)](https://travis-ci.org/aerophant/ramda) 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aerophant/ramda/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aerophant/ramda/?branch=master) 
+[![Code Coverage](https://scrutinizer-ci.com/g/aerophant/ramda/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/aerophant/ramda/?branch=master) 
+[![Latest Stable Version](https://poser.pugx.org/aerophant/ramda/v/stable)](https://packagist.org/packages/aerophant/ramda) 
+[![License](https://poser.pugx.org/aerophant/ramda/license)](https://packagist.org/packages/aerophant/ramda)
 
 ## Under Development :(
 
