@@ -1,7 +1,15 @@
 <phpunit bootstrap="vendor/autoload.php">
-    <testsuites>
-        <testsuite name="Aerophan Ramda Test">
-            <directory>test</directory>
-        </testsuite>
-    </testsuites>
+  <testsuites>
+    <testsuite name="Aerophan Ramda Test">
+      <directory>test</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./src</directory>
+    </whitelist>
+  </filter>
+  <php>
+    <ini name="error_reporting" value="E_ALL"/>
+  </php>
 </phpunit>
