@@ -2,7 +2,7 @@
 namespace Aerophant\RamdaTest;
 
 use function Aerophant\Ramda\prepend;
-use PHPStan\Testing\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class PrependTest extends TestCase
 {

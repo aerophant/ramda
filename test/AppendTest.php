@@ -2,7 +2,7 @@
 namespace Aerophant\RamdaTest;
 
 use function Aerophant\Ramda\append;
-use PHPStan\Testing\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class AppendTest extends TestCase
 {

@@ -63,6 +63,21 @@ function append() {
 }
 
 /**
+ * [a] → [a] → [a]
+ * @param $item
+ * @param array $array
+ * @return array|\Closure
+ */
+function concat() {
+  $concat = function (array $firstArray, array $secondArray) {
+    return array_merge($firstArray, $secondArray);
+  };
+  $arguments = func_get_args();
+  $curriedAny = curryN($concat, 2);
+  return call_user_func_array($curriedAny, $arguments);
+}
+
+/**
  * @param int $index
  * @param array $array
  * @return mixed
