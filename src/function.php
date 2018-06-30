@@ -72,7 +72,8 @@ function curryN(callable $fn, int $numberOfArguments)
  * @param array $args
  * @return \Closure
  */
-function partial(callable $fn, array $args) {
+function partial(callable $fn, array $args)
+{
   return function () use ($fn, $args) {
     $arguments = func_get_args();
     return call_user_func_array($fn, array_merge($args, $arguments));
@@ -85,7 +86,8 @@ function partial(callable $fn, array $args) {
  * @param array $args
  * @return \Closure
  */
-function partialRight(callable $fn, array $args) {
+function partialRight(callable $fn, array $args)
+{
   return function () use ($fn, $args) {
     $arguments = func_get_args();
     return call_user_func_array($fn, array_merge($arguments, $args));
