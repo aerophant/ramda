@@ -24,6 +24,7 @@
     "files": [
       "src/function.php",
       "src/list.php",
+      "src/logic.php",
       "src/math.php",
       "src/relation.php"
     ]
