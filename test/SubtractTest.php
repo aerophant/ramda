@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class SubtractTest extends TestCase
 {
-  public function testDivide() {
+  public function testDivide()
+  {
     $firstValue = 50;
     $secondValue = 10;
     $expectedResult = 40;

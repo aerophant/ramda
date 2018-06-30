@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class ConcatTest extends TestCase
 {
-  public function testConcat() {
+  public function testConcat()
+  {
     $firstArray = [1, 2, 3];
     $secondArray = [4, 5, 6];
     $expectedResult = [1, 2, 3, 4, 5, 6];

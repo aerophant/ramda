@@ -53,7 +53,8 @@ function any()
  * @param array $array
  * @return array|\Closure
  */
-function append() {
+function append()
+{
   $append = function ($item, array $array) {
     return array_merge($array, [$item]);
   };
@@ -68,7 +69,8 @@ function append() {
  * @param array $array
  * @return array|\Closure
  */
-function concat() {
+function concat()
+{
   $concat = function (array $firstArray, array $secondArray) {
     return array_merge($firstArray, $secondArray);
   };
@@ -168,7 +170,8 @@ function map()
  * @param array $array
  * @return array|\Closure
  */
-function prepend() {
+function prepend()
+{
   $prepend = function ($item, array $array) {
     return array_merge([$item], $array);
   };
