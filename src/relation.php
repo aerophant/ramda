@@ -36,6 +36,22 @@ function gte()
   return call_user_func_array($curried, $arguments);
 }
 
+/**
+ * a → a → Boolean
+ * @param mixed $firstValue
+ * @param mixed $secondValue
+ * @return boolean|\Closure
+ */
+function identical()
+{
+  $identical = function ($firstValue, $secondValue) {
+    return $firstValue === $secondValue;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($identical, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
 function lt()
 {
   $lt = function ($a, $b) {

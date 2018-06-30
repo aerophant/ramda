@@ -106,6 +106,20 @@ function curryN(callable $fn, int $numberOfArguments)
 }
 
 /**
+ * @param mixed $value
+ * @return mixed|\Closure
+ */
+function identity()
+{
+  $identity = function ($value) {
+    return $value;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($identity, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * ((a, b, c, …, n) → x) → [a, b, c, …] → ((d, e, f, …, n) → x)
  * @param callable $fn
  * @param array $args
