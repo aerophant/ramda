@@ -10,7 +10,7 @@ Modern functional programming library inspired by ramdajs
 ## Under Development :(
 
 ## Why prefer `aerophant/ramda` over other functional libraries or native php functions
-- `aerophant/ramda` provide auto curry for you and give you better life to do function composition like `ramdajs` or `lodash/fp`.
+- `aerophant/ramda` provide auto curry for you and give you better life to do function composition like `ramdajs`
 
       pipe(
          always([1, 2, 3, 4, 5]),
@@ -22,6 +22,10 @@ Modern functional programming library inspired by ramdajs
          ))
       )();
       // => [2, 4, 6]
+      
+- Easy to pass `aerophant/ramda` as callable, just call it without argument.
+
+       $alwaysReturn1 = call_user_func_array(always(), 1);
       
 ## RoadMap
 - version 0.1: https://github.com/aerophant/ramda/issues/1
