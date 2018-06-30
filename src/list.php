@@ -207,7 +207,7 @@ function groupBy()
     return reduce(
       function ($acc, $item) use ($keySelector) {
         $key = $keySelector($item);
-        $acc[$key] = is_array($acc[$key]) ? array_merge($acc[$key], [$item]) : [$item];
+        $acc[$key] = array_key_exists($key, $acc) ? array_merge($acc[$key], [$item]) : [$item];
         return $acc;
       },
       [],
