@@ -34,6 +34,20 @@ function divide()
 }
 
 /**
+ * @param double|float|integer $value
+ * @return double|float|integer
+ */
+function inc()
+{
+  $inc = function ($value) {
+    return $value + 1;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($inc, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * Number → Number → Number
  * @param integer|float|double $firstValue
  * @param integer|float|double $secondValue
