@@ -66,6 +66,12 @@ function curryN(callable $fn, int $numberOfArguments)
   };
 }
 
+/**
+ * ((a, b, c, …, n) → x) → [a, b, c, …] → ((d, e, f, …, n) → x)
+ * @param callable $fn
+ * @param array $args
+ * @return \Closure
+ */
 function partial(callable $fn, array $args) {
   return function () use ($fn, $args) {
     $arguments = func_get_args();
@@ -73,6 +79,12 @@ function partial(callable $fn, array $args) {
   };
 }
 
+/**
+ * ((a, b, c, …, n) → x) → [d, e, f, …, n] → ((a, b, c, …) → x)
+ * @param callable $fn
+ * @param array $args
+ * @return \Closure
+ */
 function partialRight(callable $fn, array $args) {
   return function () use ($fn, $args) {
     $arguments = func_get_args();

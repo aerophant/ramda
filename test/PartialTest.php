@@ -7,12 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class PartialTest extends TestCase
 {
-  public function testPartial() {
+  public function testPartial()
+  {
     $double = partial(multiply(), [2]);
     $arg = 10;
     $expectedResult = 20;
     $actualResult = $double($arg);
     $this->assertEquals($expectedResult, $actualResult);
   }
-
 }
