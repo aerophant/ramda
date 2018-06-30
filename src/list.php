@@ -48,6 +48,38 @@ function any()
 }
 
 /**
+ * a → [a] → [a]
+ * @param mixed $item
+ * @param array $array
+ * @return array|\Closure
+ */
+function append()
+{
+  $append = function ($item, array $array) {
+    return array_merge($array, [$item]);
+  };
+  $arguments = func_get_args();
+  $curriedAny = curryN($append, 2);
+  return call_user_func_array($curriedAny, $arguments);
+}
+
+/**
+ * [a] → [a] → [a]
+ * @param mixed $item
+ * @param array $array
+ * @return array|\Closure
+ */
+function concat()
+{
+  $concat = function (array $firstArray, array $secondArray) {
+    return array_merge($firstArray, $secondArray);
+  };
+  $arguments = func_get_args();
+  $curriedAny = curryN($concat, 2);
+  return call_user_func_array($curriedAny, $arguments);
+}
+
+/**
  * @param int $index
  * @param array $array
  * @return mixed
@@ -130,6 +162,22 @@ function map()
   $arguments = func_get_args();
   $curried = curryN('array_map', 2);
   return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * a → [a] → [a]
+ * @param mixed $item
+ * @param array $array
+ * @return array|\Closure
+ */
+function prepend()
+{
+  $prepend = function ($item, array $array) {
+    return array_merge([$item], $array);
+  };
+  $arguments = func_get_args();
+  $curriedAny = curryN($prepend, 2);
+  return call_user_func_array($curriedAny, $arguments);
 }
 
 /**
