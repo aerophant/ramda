@@ -23,13 +23,13 @@ Modern functional programming library inspired by ramdajs
       )();
       // => [2, 4, 6]
       
-- Easy to pass `aerophant/ramda` as callable, just call it without argument.
+- Easy to pass almost of `aerophant/ramda` functions as callable, just call it without argument.
 
        $alwaysReturn1 = call_user_func_array(always(), 1);
       
 ## RoadMap
 - version 0.1: https://github.com/aerophant/ramda/issues/1
     
-## Want to help
+## Want to help me ?
 - You can suggest function by creating issues and/or PR
 - help improve performance by creating PR.
