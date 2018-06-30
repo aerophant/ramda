@@ -44,13 +44,6 @@ jobs:
         - travis_retry composer require --dev --prefer-dist --prefer-stable vimeo/psalm:2.0.0
       script: vendor/bin/psalm
 
-    - stage: Run benchmarks
-      php: 7.1
-      env: DEPENDENCIES=""
-      before_script:
-        - travis_retry composer require --dev --prefer-dist --prefer-stable phpbench/phpbench:^0.13.0
-      script: ./vendor/bin/phpbench run --progress=dots --iterations=1
-
     - stage: Upload Coverage
       php: 7.1
       env: DEPENDENCIES=""
