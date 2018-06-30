@@ -137,6 +137,34 @@ function dropLast()
 }
 
 /**
+ * @param string|array $suffix
+ * @param string|array $list
+ * @return boolean|\Closure
+ */
+function endsWith()
+{
+  $endsWith = function ($suffix, $list) {
+    if (is_string($suffix) && is_string($list)) {
+      return $suffix === '' || (($temp = strlen($list) - strlen($suffix)) >= 0 && strpos($list, $suffix) !== false);
+    }
+    if (is_array($suffix) && is_array($list)) {
+      $index = count($list) - count($suffix);
+      foreach ($suffix as $it) {
+        if ($it != $list[$index]) {
+          return false;
+        }
+        $index++;
+      }
+      return true;
+    }
+    throw new \InvalidArgumentException(__FUNCTION__ . 'accepts only string or array as it arguments');
+  };
+  $arguments = func_get_args();
+  $curried = curryN($endsWith, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * @param callable $predicateFunction
  * @param array $array
  * @return mixed
@@ -163,6 +191,26 @@ function filterPreserveKey()
   };
   $arguments = func_get_args();
   $curried = curryN($filter, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param callable $predicateFunction
+ * @param array $list
+ * @return mixed
+ */
+function find()
+{
+  $find = function (callable $predicateFunction, array $list) {
+    foreach ($list as $item) {
+      if ($predicateFunction($item)) {
+        return $item;
+      }
+    }
+    return null;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($find, 2);
   return call_user_func_array($curried, $arguments);
 }
 
