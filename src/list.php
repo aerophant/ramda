@@ -134,7 +134,7 @@ function map()
 
 /**
  * @param callable $accumulator
- * @param $initialValue
+ * @param mixed $initialValue
  * @param array $array
  * @return mixed
  */

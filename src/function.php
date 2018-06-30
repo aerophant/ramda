@@ -47,7 +47,7 @@ function curryN(callable $fn, int $numberOfArguments)
   return function () use ($fn, $numberOfArguments) {
     $arguments = func_get_args();
     $length = count($arguments);
-    if ($length > $length) {
+    if ($length > $numberOfArguments) {
       throw new \InvalidArgumentException(
         "Number of passed($length) parameters is greater than expected($numberOfArguments)"
       );
@@ -57,7 +57,7 @@ function curryN(callable $fn, int $numberOfArguments)
       return call_user_func_array($fn, $arguments);
     }
     // AUTO CURRY
-    $curriedFn = function () use ($fn, $arguments, $length) {
+    $curriedFn = function () use ($fn, $arguments) {
       $curriedArguments = func_get_args();
       return call_user_func_array($fn, array_merge($arguments, $curriedArguments));
     };
