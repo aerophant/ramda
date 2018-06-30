@@ -80,6 +80,20 @@ function concat()
 }
 
 /**
+ * a → [a] → Boolean
+ * @param mixed $item item to compare against
+ * @param array $array The array to consider
+ * @return boolean|\Closure
+ */
+function contains()
+{
+  $contains = partialRight('in_array', [true]);
+  $arguments = func_get_args();
+  $curriedAny = curryN($contains, 2);
+  return call_user_func_array($curriedAny, $arguments);
+}
+
+/**
  * @param int $index
  * @param array $array
  * @return mixed
