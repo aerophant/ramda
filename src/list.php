@@ -300,6 +300,18 @@ function insert()
   return call_user_func_array($curried, $arguments);
 }
 
+/**
+ * @param string $string
+ * @param array $array
+ * @return string
+ */
+function join()
+{
+  $arguments = func_get_args();
+  $curried = curryN('implode', 2);
+  return call_user_func_array($curried, $arguments);
+}
+
 function last()
 {
   $last = function (array $array) {
@@ -310,6 +322,13 @@ function last()
   };
   $arguments = func_get_args();
   $curried = curryN($last, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+function length()
+{
+  $arguments = func_get_args();
+  $curried = curryN('count', 1);
   return call_user_func_array($curried, $arguments);
 }
 
