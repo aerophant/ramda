@@ -345,6 +345,21 @@ function map()
 }
 
 /**
+ * @param mixed $firstValue
+ * @param mixed $secondValue
+ * @return array|\Closure
+ */
+function pair()
+{
+  $pair = function ($firstValue, $secondValue) {
+    return [$firstValue, $secondValue];
+  };
+  $arguments = func_get_args();
+  $curried = curryN($pair, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * a → [a] → [a]
  * @param mixed $item
  * @param array $array
