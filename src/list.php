@@ -510,7 +510,66 @@ function reverse()
   return call_user_func_array($curried, $arguments);
 }
 
+/**
+ * @param int $fromIndex
+ * @param int $toIndex
+ * @param mixed $list
+ * @return array|string|\Closure
+ */
+function slice()
+{
+  $slice = function (int $fromIndex, int $toIndex, $list) {
+    if (is_array($list)) {
+      $listCount =  count($list);
+      $actualFromIndex = $fromIndex < 0 ? $listCount + $fromIndex : $fromIndex;
+      $actualToIndex = $toIndex < 0 ? $listCount + $toIndex : $toIndex;
+      return array_slice($list, $actualFromIndex, $actualToIndex - $actualFromIndex);
+    }
+    if (is_string($list)) {
+      $listCount =  strlen($list);
+      $actualFromIndex = $fromIndex < 0 ? $listCount + $fromIndex : $fromIndex;
+      $actualToIndex = $toIndex < 0 ? $listCount + $toIndex : $toIndex;
+      return substr($list, $actualFromIndex, $actualToIndex - $actualFromIndex);
+    }
+    throw new \InvalidArgumentException('slice() only support array and string');
+  };
+  $arguments = func_get_args();
+  $curried = curryN($slice, 3);
+  return call_user_func_array($curried, $arguments);
+}
 
+/**
+ * @param callable $comparator
+ * @param array $array
+ * @return array|\Closure
+ */
+function sort()
+{
+  $sort = function (callable $comparator, array $array) {
+    usort($array, $comparator);
+    return $array;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($sort, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param callable $keySelector
+ * @param array $array
+ * @return array|\Closure
+ */
+function sortBy()
+{
+  $sortBy = function (callable $keySelector, array $array) {
+    $groupedArray = groupBy($keySelector, $array);
+    ksort($groupedArray);
+    return apply('array_merge', array_values($groupedArray));
+  };
+  $arguments = func_get_args();
+  $curried = curryN($sortBy, 2);
+  return call_user_func_array($curried, $arguments);
+}
 
 function tail()
 {
