@@ -60,3 +60,11 @@ function replaceAllRegexp()
   $curried = curryN('preg_replace', 3);
   return call_user_func_array($curried, $arguments);
 }
+
+
+function toLower()
+{
+  $arguments = func_get_args();
+  $curried = curryN('strtolower', 1);
+  return call_user_func_array($curried, $arguments);
+}

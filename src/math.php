@@ -69,7 +69,7 @@ function median()
 {
   $median = function (array $numbers) {
     $length = count($numbers);
-    sort($numbers, SORT_NUMERIC);
+    \sort($numbers, SORT_NUMERIC);
     if ($length % 2 == 0) {
       return mean([$numbers[$length/2], $numbers[$length/2 - 1]]);
     }
