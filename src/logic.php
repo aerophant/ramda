@@ -1,6 +1,21 @@
 <?php
 namespace Aerophant\Ramda;
 
+/**
+ * @param bool $firstValue
+ * @param bool $secondValue
+ * @return bool|\Closure
+ */
+function andLogically()
+{
+  $and = function (bool $firstValue, bool $secondValue) {
+    return $firstValue && $secondValue;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($and, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
 function defaultTo()
 {
   $defaultTo = function ($defaultValue, $value) {
@@ -45,5 +60,20 @@ function isEmpty()
   };
   $arguments = func_get_args();
   $curried = curryN($isEmpty, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param bool $firstValue
+ * @param bool $secondValue
+ * @return bool|\Closure
+ */
+function orLogically()
+{
+  $and = function (bool $firstValue, bool $secondValue) {
+    return $firstValue || $secondValue;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($and, 2);
   return call_user_func_array($curried, $arguments);
 }
