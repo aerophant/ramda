@@ -1,5 +1,4 @@
-# ramda
-Modern functional programming library inspired by ramdajs
+# Ramdajs in PHP, Modern functional programming library inspired by ramdajs
 
 [![Build Status](https://travis-ci.org/aerophant/ramda.svg?branch=master)](https://travis-ci.org/aerophant/ramda) 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aerophant/ramda/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aerophant/ramda/?branch=master) 
@@ -7,7 +6,7 @@ Modern functional programming library inspired by ramdajs
 [![Latest Stable Version](https://poser.pugx.org/aerophant/ramda/v/stable)](https://packagist.org/packages/aerophant/ramda) 
 [![License](https://poser.pugx.org/aerophant/ramda/license)](https://packagist.org/packages/aerophant/ramda)
 
-## Under Development :(
+Under Development :(
 
 ## Why prefer `aerophant/ramda` over other functional libraries or native php functions
 - `aerophant/ramda` provide auto curry for you and give you better way to do function composition like `ramdajs`
