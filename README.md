@@ -22,7 +22,7 @@ Under Development :(
       )();
       // => [2, 4, 6]
       
-- Easy to pass almost of `aerophant/ramda` functions as callable, just call it without argument.
+- Easy to pass almost of `aerophant/ramda` functions as callable, just call it without any argument.
 
        $alwaysReturn1 = call_user_func_array(always(), [1]);
       
