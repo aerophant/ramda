@@ -282,7 +282,7 @@ function head()
 
 /**
  * @param int $index
- * @param $element
+ * @param mixed $element
  * @param array $array
  * @return array|\Closure
  */
