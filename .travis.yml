@@ -57,3 +57,7 @@ jobs:
 cache:
   directories:
     - $HOME/.composer/cache
+
+branches:
+  only:
+    - "master"

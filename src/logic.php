@@ -50,6 +50,20 @@ function ifElse()
 }
 
 /**
+ * @param mixed $data
+ * @return bool|\Closure
+ */
+function isEmpty()
+{
+  $isEmpty = function ($value) {
+    return empty($value);
+  };
+  $arguments = func_get_args();
+  $curried = curryN($isEmpty, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * @param bool $firstValue
  * @param bool $secondValue
  * @return bool|\Closure

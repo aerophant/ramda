@@ -82,6 +82,11 @@ function construct()
   return call_user_func_array($curried, $arguments);
 }
 
+/**
+ * @param callable $fn
+ * @param int $numberOfArguments
+ * @return \Closure
+ */
 function curryN(callable $fn, int $numberOfArguments)
 {
   return function () use ($fn, $numberOfArguments) {
