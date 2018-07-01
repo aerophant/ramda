@@ -363,6 +363,21 @@ function map()
 }
 
 /**
+ * @param mixed $firstValue
+ * @param mixed $secondValue
+ * @return array|\Closure
+ */
+function pair()
+{
+  $pair = function ($firstValue, $secondValue) {
+    return [$firstValue, $secondValue];
+  };
+  $arguments = func_get_args();
+  $curried = curryN($pair, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * a → [a] → [a]
  * @param mixed $item
  * @param array $array
@@ -379,6 +394,19 @@ function prepend()
 }
 
 /**
+ * Returns a list of numbers from from (inclusive) to to (inclusive).
+ * @param int|float|double $from
+ * @param int|float|double $to
+ * @return array|\Closure
+ */
+function range()
+{
+  $arguments = func_get_args();
+  $curriedAny = curryN('range', 2);
+  return call_user_func_array($curriedAny, $arguments);
+}
+
+/**
  * @param callable $accumulator
  * @param mixed $initialValue
  * @param array $array
@@ -391,6 +419,53 @@ function reduce()
   };
   $arguments = func_get_args();
   $curried = curryN($reduce, 3);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param callable $predicate
+ * @param array $array
+ * @return array|\Closure
+ */
+function reject()
+{
+  $reject = function ($predicate, array $array) {
+    return array_values(array_filter($array, compose(not(), $predicate)));
+  };
+  $arguments = func_get_args();
+  $curried = curryN($reject, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param callable $predicate
+ * @param array $array
+ * @return array|\Closure
+ */
+function rejectPreserveKey()
+{
+  $reject = function ($predicate, array $array) {
+    return array_filter($array, compose(not(), $predicate));
+  };
+  $arguments = func_get_args();
+  $curried = curryN($reject, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * Number → Number → [a] → [a]
+ * @param int $start
+ * @param int $count
+ * @param array $array
+ * @return mixed
+ */
+function remove()
+{
+  $remove = function (int $start, int $count, array $array) {
+    return array_merge(array_slice($array, 0, $start), array_slice($array, $start + $count));
+  };
+  $arguments = func_get_args();
+  $curried = curryN($remove, 3);
   return call_user_func_array($curried, $arguments);
 }
 
