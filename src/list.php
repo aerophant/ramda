@@ -470,7 +470,7 @@ function remove()
 }
 
 /**
- * @param $item
+ * @param mixed $item
  * @param int $count
  * @return array|\Closure
  */
