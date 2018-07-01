@@ -61,6 +61,17 @@ function replaceAllRegexp()
   return call_user_func_array($curried, $arguments);
 }
 
+/**
+ * @param string $delimiter
+ * @param string $string
+ * @return mixed
+ */
+function split($delimiter = null, $string = null)
+{
+  $arguments = func_get_args();
+  $curried = curryN('explode', 2);
+  return call_user_func_array($curried, $arguments);
+}
 
 function toLower()
 {

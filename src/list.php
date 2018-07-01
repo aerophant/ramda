@@ -285,19 +285,6 @@ function groupBy()
   return call_user_func_array($curried, $arguments);
 }
 
-function head()
-{
-  $head = function (array $array) {
-    if (empty($array)) {
-      return null;
-    }
-    return $array[0];
-  };
-  $arguments = func_get_args();
-  $curried = curryN($head, 1);
-  return call_user_func_array($curried, $arguments);
-}
-
 /**
  * @param int $index
  * @param mixed $element
@@ -568,6 +555,32 @@ function sortBy()
   };
   $arguments = func_get_args();
   $curried = curryN($sortBy, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param string|array $prefix
+ * @param string|array $list
+ * @return boolean|\Closure
+ */
+function startsWith($prefix = null, $list = null)
+{
+  $startsWith = function ($prefix, $list) {
+    if (is_string($prefix) && is_string($list)) {
+      return $prefix === '' || strpos($list, $prefix) === 0;
+    }
+    if (is_array($prefix) && is_array($list)) {
+      foreach ($prefix as $key => $it) {
+        if ($it != $list[$key]) {
+          return false;
+        };
+      }
+      return true;
+    }
+    throw new \InvalidArgumentException(__FUNCTION__ . 'accepts only string or array as it arguments');
+  };
+  $arguments = func_get_args();
+  $curried = curryN($startsWith, 2);
   return call_user_func_array($curried, $arguments);
 }
 

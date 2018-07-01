@@ -127,3 +127,14 @@ function subtract()
   $curried = curryN($subtract, 2);
   return call_user_func_array($curried, $arguments);
 }
+
+/**
+ * @param array $array
+ * @return double|integer
+ */
+function sum(array $array = null)
+{
+  $arguments = func_get_args();
+  $curried = curryN('array_sum', 1);
+  return call_user_func_array($curried, $arguments);
+}
