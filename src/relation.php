@@ -83,3 +83,16 @@ function max()
   $curried = curryN('max', 2);
   return call_user_func_array($curried, $arguments);
 }
+
+
+/**
+ * @param int|double|float $firstValue
+ * @param int|double|float $secondValue
+ * @return int|double|float|\Closure
+ */
+function min()
+{
+  $arguments = func_get_args();
+  $curried = curryN('min', 2);
+  return call_user_func_array($curried, $arguments);
+}
