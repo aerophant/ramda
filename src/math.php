@@ -48,6 +48,55 @@ function inc()
 }
 
 /**
+ * @param array $numbers array of numbers
+ * @return float|integer|double|\Closure
+ */
+function mean()
+{
+  $mean = function (array $numbers) {
+    $length = count($numbers);
+    if ($length === 0) {
+      throw new \InvalidArgumentException('$numbers passed to mean() must not be empty');
+    }
+    return array_sum($numbers)/$length;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($mean, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+function median()
+{
+  $median = function (array $numbers) {
+    $length = count($numbers);
+    sort($numbers, SORT_NUMERIC);
+    if ($length % 2 == 0) {
+      return mean([$numbers[$length/2], $numbers[$length/2 - 1]]);
+    }
+    return $numbers[($length-1)/2];
+  };
+  $arguments = func_get_args();
+  $curried = curryN($median, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param integer|float|double $firstValue
+ * @param integer|float|double $secondValue
+ * @return integer|float|double|\Closure
+ */
+function modulo()
+{
+  $modulo = function ($firstValue, $secondValue) {
+    return $firstValue % $secondValue;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($modulo, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+
+/**
  * Number → Number → Number
  * @param integer|float|double $firstValue
  * @param integer|float|double $secondValue

@@ -71,3 +71,15 @@ function lte()
   $curried = curryN($lte, 2);
   return call_user_func_array($curried, $arguments);
 }
+
+/**
+ * @param int|double|float $firstValue
+ * @param int|double|float $secondValue
+ * @return int|double|float|\Closure
+ */
+function max()
+{
+  $arguments = func_get_args();
+  $curried = curryN('max', 2);
+  return call_user_func_array($curried, $arguments);
+}
