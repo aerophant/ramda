@@ -345,8 +345,8 @@ function map()
 }
 
 /**
- * @param $firstValue
- * @param $secondValue
+ * @param mixed $firstValue
+ * @param mixed $secondValue
  * @return array|\Closure
  */
 function pair()
