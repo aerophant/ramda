@@ -245,6 +245,27 @@ function first()
 }
 
 /**
+ * @param array $array
+ * @return array|\Closure
+ */
+function flatten()
+{
+  $flatten = function (array $array) use (&$flatten) {
+    $accumulator = function ($acc, $item) use ($flatten) {
+      if (is_array($item)) {
+        return array_merge($acc, $flatten($item));
+      }
+      $acc[] = $item;
+      return $acc;
+    };
+    return array_reduce($array, $accumulator, []);
+  };
+  $arguments = func_get_args();
+  $curried = curryN($flatten, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * @param callable $keySelector
  * @param array $array
  * @return array
@@ -252,15 +273,12 @@ function first()
 function groupBy()
 {
   $groupBy = function (callable $keySelector, array $array) {
-    return reduce(
-      function ($acc, $item) use ($keySelector) {
-        $key = $keySelector($item);
-        $acc[$key] = array_key_exists($key, $acc) ? array_merge($acc[$key], [$item]) : [$item];
-        return $acc;
-      },
-      [],
-      $array
-    );
+    $accumulator = function ($acc, $item) use ($keySelector) {
+      $key = $keySelector($item);
+      $acc[$key] = array_key_exists($key, $acc) ? array_merge($acc[$key], [$item]) : [$item];
+      return $acc;
+    };
+    return array_reduce($array, $accumulator, []);
   };
   $arguments = func_get_args();
   $curried = curryN($groupBy, 2);
@@ -375,6 +393,49 @@ function reduce()
   $curried = curryN($reduce, 3);
   return call_user_func_array($curried, $arguments);
 }
+
+/**
+ * @param $item
+ * @param int $count
+ * @return array|\Closure
+ */
+function repeat()
+{
+  $repeat = function ($item, int $count) {
+    return array_reduce(
+      range(1, $count),
+      function ($acc, $unsedItem) use ($item) {
+        return array_merge($acc, [$item]);
+      },
+      []
+    );
+  };
+  $arguments = func_get_args();
+  $curried = curryN($repeat, 2);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
+ * @param array|string $list
+ * @return array|string|\Closure
+ */
+function reverse()
+{
+  $reverse = function ($list) {
+    if (is_array($list)) {
+      return array_reverse($list);
+    }
+    if (is_string($list)) {
+      return strrev($list);
+    }
+    throw new \InvalidArgumentException('reverse() only support string or array as an argument');
+  };
+  $arguments = func_get_args();
+  $curried = curryN($reverse, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+
 
 function tail()
 {
