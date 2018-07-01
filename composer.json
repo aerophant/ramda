@@ -27,6 +27,7 @@
       "src/logic.php",
       "src/math.php",
       "src/relation.php",
+      "src/string.php",
       "src/type.php"
     ]
   },
