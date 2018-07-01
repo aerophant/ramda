@@ -26,7 +26,8 @@
       "src/list.php",
       "src/logic.php",
       "src/math.php",
-      "src/relation.php"
+      "src/relation.php",
+      "src/type.php"
     ]
   },
   "autoload-dev": {

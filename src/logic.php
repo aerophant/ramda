@@ -33,3 +33,17 @@ function ifElse()
   $curried = curryN($ifElse, 3);
   return call_user_func_array($curried, $arguments);
 }
+
+/**
+ * @param mixed $data
+ * @return bool|\Closure
+ */
+function isEmpty()
+{
+  $isEmpty = function ($value) {
+    return empty($value);
+  };
+  $arguments = func_get_args();
+  $curried = curryN($isEmpty, 1);
+  return call_user_func_array($curried, $arguments);
+}

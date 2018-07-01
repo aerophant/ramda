@@ -280,6 +280,26 @@ function head()
   return call_user_func_array($curried, $arguments);
 }
 
+/**
+ * @param int $index
+ * @param $element
+ * @param array $array
+ * @return array|\Closure
+ */
+function insert()
+{
+  $insert = function (int $index, $element, array $array) {
+    return array_merge(
+      array_slice($array, 0, $index),
+      [$element],
+      array_slice($array, $index)
+    );
+  };
+  $arguments = func_get_args();
+  $curried = curryN($insert, 3);
+  return call_user_func_array($curried, $arguments);
+}
+
 function last()
 {
   $last = function (array $array) {
