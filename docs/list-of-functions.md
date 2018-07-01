@@ -1,0 +1,96 @@
+- [x] add
+- [x] all
+- [x] always
+- [x] any
+- [x] ~~and~~ -> andLogically
+- [x] append
+- [x] apply
+- [x] call
+- [x] concat
+- [x] compose
+- [x] composeN
+- [x] construct
+- [x] contains
+- [ ] ~~curry~~ -  doesn't provide because I want to avoid reflection.
+- [x] curryN
+- [x] defaultTo
+- [x] divide
+- [x] drop
+- [x] dropFirst
+- [x] dropLast
+- [ ] ~~empty~~ - not fit with PHP language nature
+- [x] endsWith
+- [x] equals
+- [x] filter
+- [x] filterPreserveKey
+- [x] find
+- [x] first
+- [x] ~~forEach~~ -> arrayForEach  - `forEach` is reserved keyword in PHP
+- [x] groupBy
+- [x] gt
+- [x] gte
+- [x] head
+- [x] identical
+- [x] identity
+- [x] ifElse
+- [x] inc
+- [x] insert
+- [x] isEmpty
+- [x] isNil
+- [x] join
+- [x] last
+- [x] length
+- [x] lt
+- [x] lte
+- [x] map
+- [x] match
+- [x] max
+- [x] mean
+- [x] median
+- [ ] memorize
+- [ ] merge
+- [ ] mergeAll
+- [ ] min
+- [x] modulo
+- [x] multiply
+- [ ] none
+- [ ] not
+- [ ] nth
+- [ ] once
+- [x] ~~or~~ -> orLogically
+- [ ] pair
+- [x] partial
+- [x] partialRight
+- [ ] path
+- [ ] pathOr
+- [x] pipe
+- [x] prepend
+- [ ] range
+- [x] reduce
+- [ ] reject
+- [ ] remove
+- [ ] replace
+- [ ] repeat
+- [ ] reverse
+- [ ] slice
+- [ ] sort
+- [ ] sortBy
+- [ ] sortWith
+- [ ] split
+- [ ] startsWith
+- [x] subtract
+- [ ] sum
+- [x] tail
+- [ ] take
+- [ ] takeLast
+- [ ] tap
+- [ ] test
+- [ ] toLower
+- [ ] union
+- [ ] unique
+- [ ] uniqueBy
+- [ ] uniqueWith
+- [ ] unless
+- [ ] until
+- [ ] zip
+- [ ] zipWith
