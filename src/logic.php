@@ -64,6 +64,20 @@ function isEmpty()
 }
 
 /**
+ * @param mixed $value
+ * @return bool|\Closure
+ */
+function not()
+{
+  $not = function ($value) {
+    return !$value;
+  };
+  $arguments = func_get_args();
+  $curried = curryN($not, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * @param bool $firstValue
  * @param bool $secondValue
  * @return bool|\Closure
