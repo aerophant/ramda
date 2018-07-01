@@ -125,6 +125,26 @@ function identity()
 }
 
 /**
+ * @param callable $fn function to memorize result
+ * @return callable memorized function
+ */
+function memoize()
+{
+  $memorize = function (callable $fn) {
+    $result = null;
+    return function () use (&$result, $fn) {
+      if ($result === null) {
+        $result = $fn();
+      }
+      return $result;
+    };
+  };
+  $arguments = func_get_args();
+  $curried = curryN($memorize, 1);
+  return call_user_func_array($curried, $arguments);
+}
+
+/**
  * ((a, b, c, …, n) → x) → [a, b, c, …] → ((d, e, f, …, n) → x)
  * @param callable $fn
  * @param array $args
