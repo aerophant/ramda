@@ -27,6 +27,7 @@ Under Development :(
        $alwaysReturn1 = call_user_func_array(always(), [1]);
       
 ## RoadMap
+- version 0.0.x : Under development, not all function support
 - version 0.1: https://github.com/aerophant/ramda/issues/1
     
 ## Want to help me ?
