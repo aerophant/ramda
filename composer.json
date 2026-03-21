@@ -38,6 +38,7 @@
     }
   },
   "scripts": {
+    "check-syntax": "php scripts/check-php-syntax.php",
     "test": "phpunit"
   }
 
