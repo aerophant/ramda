@@ -3,6 +3,7 @@
 
   <file>src</file>
   <file>test</file>
+  <file>scripts</file>
 
   <description>PSR2 with two spaces</description>
 
