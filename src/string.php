@@ -2,18 +2,20 @@
 namespace Aerophant\Ramda;
 
 /**
+ * Regex match (Ramda-style). Named regexMatch because `match` is reserved in PHP 8+.
+ *
  * @param string $pattern
  * @param string $string
  * @return array|\Closure
  */
-function match()
+function regexMatch()
 {
-  $match = function (string $pattern, string $string) {
+  $fn = function (string $pattern, string $string) {
     preg_match($pattern, $string, $matches);
     return $matches;
   };
   $arguments = func_get_args();
-  $curried = curryN($match, 2);
+  $curried = curryN($fn, 2);
   return call_user_func_array($curried, $arguments);
 }
 
