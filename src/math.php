@@ -132,7 +132,7 @@ function subtract()
  * @param array $array
  * @return double|integer
  */
-function sum(array $array = null)
+function sum(?array $array = null)
 {
   $arguments = func_get_args();
   $curried = curryN('array_sum', 1);

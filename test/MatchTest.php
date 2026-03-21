@@ -2,7 +2,7 @@
 
 namespace Aerophant\RamdaTest;
 
-use function Aerophant\Ramda\match;
+use function Aerophant\Ramda\regexMatch;
 use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase
@@ -12,7 +12,7 @@ class MatchTest extends TestCase
     $pattern = '/^([a-z]+)-([0-9]+)$/';
     $testString = 'cat-009';
     $expect = ['cat-009', 'cat', '009'];
-    $actual = match($pattern, $testString);
+    $actual = regexMatch($pattern, $testString);
     $this->assertEquals($expect, $actual);
   }
 
@@ -21,7 +21,7 @@ class MatchTest extends TestCase
     $pattern = '/^([a-z]+)-([0-9]+)$/';
     $testString = 'cat009';
     $expect = [];
-    $actual = match($pattern, $testString);
+    $actual = regexMatch($pattern, $testString);
     $this->assertEquals($expect, $actual);
   }
 }

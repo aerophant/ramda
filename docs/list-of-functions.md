@@ -43,7 +43,7 @@
 - [x] lt
 - [x] lte
 - [x] map
-- [x] match
+- [x] ~~match~~ -> regexMatch — `match` is reserved in PHP 8+
 - [x] max
 - [x] mean
 - [x] median
